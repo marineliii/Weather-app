@@ -8,6 +8,10 @@ search.addEventListener('click', () => {
 
     const APIKey = '46b4f12d3ed11a2369fe36add84bfa5d';
     const city = document.querySelector('.search-box input').value;
+    const title = document.querySelector('.naslov');
+
+
+    
 
     if (city === '')
         return;
@@ -17,11 +21,14 @@ search.addEventListener('click', () => {
         .then(json => {
 
             if (json.cod === '404') {
-                container.style.height = '400px';
+                container.style.height = '500px';
                 weatherBox.style.display = 'none';
                 weatherDetails.style.display = 'none';
                 error404.style.display = 'block';
                 error404.classList.add('fadeIn');
+                title.style.display = 'flex';
+                title.style.top = '0'
+
                 return;
             }
 
@@ -69,9 +76,11 @@ search.addEventListener('click', () => {
             weatherBox.classList.add('fadeIn');
             weatherDetails.classList.add('fadeIn');
             container.style.height = '590px';
+            title.style.display = 'none';
 
 
         });
+        
 
 
 });
